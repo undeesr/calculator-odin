@@ -50,13 +50,90 @@ function operate(a, b, operator) {
 }
 
 let displayValue = "";
-const display = document.querySelector('#display');
+const display = document.querySelector("#display");
+const keys = Array.from(document.querySelectorAll(".key"));
 
-const buttonsArray = Array.from(
-    document.querySelectorAll('.key')
-);
+function evaluateExpression() {
+  let firstOperand = "";
+  let operator = "";
+  let secondOperand = "";
 
-buttonsArray.forEach(button => button.addEventListener('click', (e) => {
-    displayValue += e.target.textContent;
+  keys.forEach((key) => key.addEventListener('click', e => {
+    switch (e.target.textContent) {
+        case '+':
+        case '-':
+        case '/':
+        case '*':
+            if (secondOperand == "") {
+                operator = e.target.textContent;
+                displayValue = operator;
+            } else {
+                firstOperand = `${operate(+firstOperand, +secondOperand, operator)}`;
+                operator = e.target.textContent;
+                secondOperand = '';
+                displayValue = "";
+                displayValue = firstOperand;
+            }
+            break;
+
+        case '=':
+            firstOperand = `${operate(+firstOperand, +secondOperand, operator)}`;
+            secondOperand = "";
+            operator = "";
+            displayValue = firstOperand;
+            console.table({firstOperand, secondOperand, operator});
+            break;
+
+        case '<-':
+
+            if (firstOperand === displayValue && 
+                secondOperand === displayValue) {
+                    displayValue = displayValue.split("").reverse().splice(
+                        displayValue.length - 1,
+                        1
+                    ).join("");
+                    secondOperand = displayValue
+                } else if (firstOperand === displayValue) {
+                    displayValue = displayValue.split("").reverse().splice(
+                        displayValue.length - 1,
+                        1
+                    ).join("");
+                    firstOperand = displayValue;
+                } else {
+                    displayValue = displayValue.split("").reverse().splice(
+                        displayValue.length - 1,
+                        1
+                    ).join("");
+                    secondOperand = displayValue;
+                }
+            break;
+
+            case 'C':
+                firstOperand = "";
+                secondOperand = "";
+                operator = "";
+
+                break;
+
+            case '+/-':
+                break;
+
+        default:
+            if (operator == "") {
+            firstOperand += e.target.textContent;
+            console.table({firstOperand, secondOperand, operator})
+            displayValue = "";
+            displayValue += firstOperand;
+            } else {
+                secondOperand += e.target.textContent;
+                console.table({firstOperand, secondOperand, operator})
+                displayValue = "";
+                displayValue += secondOperand;
+            }
+            break;
+    }
     display.textContent = displayValue;
-}))
+  }))
+}
+
+evaluateExpression();
