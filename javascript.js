@@ -48,3 +48,15 @@ function operate(a, b, operator) {
 
   return result;
 }
+
+let displayValue = "";
+const display = document.querySelector('#display');
+
+const buttonsArray = Array.from(
+    document.querySelectorAll('.key')
+);
+
+buttonsArray.forEach(button => button.addEventListener('click', (e) => {
+    displayValue += e.target.textContent;
+    display.textContent = displayValue;
+}))
