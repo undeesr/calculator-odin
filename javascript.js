@@ -11,13 +11,12 @@ function animateGradient() {
     cell.style.background = `linear-gradient(${
       counter % 360
     }deg, transparent, rgba(255, 255, 255,0.5), rgba(255, 255, 255,0.5), #d6d4d4, rgba(255, 255, 255,0.5), rgba(255, 255, 255,0.5), transparent)`;
-    console.log(cell);
   });
-
-  console.log(counter);
 }
 
 animateGradient();
+
+// operate function
 
 function operate(a, b, operator) {
   if (b === 0 && operator === "/") {
