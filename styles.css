@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 70px 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.calculator-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 0.5px solid #6e6e6e;
+}
+
+.display {
+    flex: 4 1 auto;
+    height: 100%;
+}
+
+.keypad {
+    flex: 7 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.operands-operators {
+    display: flex;
+    height: 100%;
+}
+
+.numeric-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+    gap: 01px;
+}
+
+.operator-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 01px;
+}
+
+.key {
+    width: 100px;
+    height: 70px;
+    border-radius: 0;
+    background-color: #fcfcfc;
+    border: 0.25px solid #f1f0f0;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.key:hover {
+    background-color: #e0e0e0;
+}
+
+#evaluate {
+    background-color: #90abc1;
+}
+
+#evaluate:hover {
+    background-color: #45779e;
+}
+
+.tools-panel {
+    height: 100%;
+    display: flex;
+    gap: 01px;
+}
+
+#gradient {
+    background: linear-gradient(405deg, transparent, rgba(255, 255, 255,0.5), rgba(255, 255, 255,0.5), #d6d4d4, rgba(255, 255, 255,0.5), rgba(255, 255, 255,0.5), transparent);
+}
+
+.special {
+    flex: 2;
+}
+
+.display {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 32px;
+    box-sizing: border-box;
+    padding: 22px;
+}
